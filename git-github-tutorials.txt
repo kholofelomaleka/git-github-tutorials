@@ -1,0 +1,17 @@
+Terms
+
+- Repository - Project or directory where project is kept.
+
+Git Commands
+
+- clone -> brings a remote repo to local machine.
+	e.g. git clone 'remote repo url'
+- add -> track files and chanegs in Git.
+	e.g. git add .
+- commit -> save file to git repo (local clone of repo).
+	e.g. git commit -m "commit message"
+- push -> upload all local commits to remote repo.
+	e.g. git push origin main -- where origin is local location of repo and main is remote repo
+- pull -> download changes from remote repo to local machine.
+	git pull
+

@@ -1,2 +1,2 @@
 # git-github-tutorials
-git &amp; github tutorials from freeCodeCamp.org
+Simple git &amp; github tutorials/crash course from freeCodeCamp.org
