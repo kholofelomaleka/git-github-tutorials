@@ -1,0 +1,69 @@
+1. Starting with git
+	- git init <working dir> 
+	- git status -- tells you the branch and what needs to be committed. i.e the status of the branch you are on
+	- git add -- adds new changes to staging area, and it is ready to be commited to the branch (remote repo)
+	- git commit -am -- commits the file to the git repository.
+	- git pull -- get remote branch to local working girectory
+	- git push -- copy files to remote repository
+	- git reset HEAD <filename> -- unstage a file after doing a git add.
+	- git checkout -- <filename> -- this will bring back the file that was last committed.
+	-- NB!!! You cannot undo a commit.  So make sure of changes before you COMMIT!!!
+	- git mv -- Renames/moves files
+	- git rm -- Delete files
+	- git ls-files - List of all the files being tracked by git in the repo
+
+2. Git Workflow
+- LOCAL 
+-- Working dir --> Staging area --> Local Repo (.git folder)
+
+- REMOTE
+
+3. .gitignore
+-- This file tells git to ignore certain files or file paths (this file must be on the working directory)
+e.g. Specific file, File patterns(\*.txt), or a Folder
+
+4. Comparing commits
+	- git log --oneline
+	- git diff --staged HEAD <filename>
+	- git diff <commit id> <commit id> -- To compare between 2 commits 
+
+5. Working with branches
+	- git branch -a
+	- git branch <new_branch_name> -- creating a new branch
+	- git checkout <branch_to> -- switch branches
+	- git branch -m <branch_name> <new_branch_mame> -- move from old branch name to new branch name
+	- git branch -d <branch_name> -- delete a branch, must not be in that branch.
+
+6. Merging 
+- To merge changes into MASTER branch, switch back to MASTER *(git checkout)*, then 
+	- git merge <other_branch> -- Merge other_branch into current branch
+
+- Fast-forward merge - Git places all the commits on the MASTER branch because no other changes were made on MASTER, it makes it look like the changes were all on MASTER
+
+7. Resolving Merge Conflicts
+- If working on the same file on more than one branch, it will result in merge conflicts.
+- To resolve this
+	- git mergetool <file_name>
+	- git commit -am ""
+
+8. Rebasing
+- The process when you cut off a branch from its current start point and transplant it to another point.
+- Do not rebase a branch if there's a chance that somebody has already forked it and has based their own branch on it.
+	- git rebase <source> <target>
+- Aborting git rebase because of conflicts
+	- git rebase --abort
+- Continue a rebase after resolving the conflicts
+	- git rebase --continue
+
+9. Stashing
+- Saving unfinished work for later, where you dont want to commit it, so that you can return to it at a later point.  You can stash it, branch off and work on something else.
+- Stashing takes the dirty state of your working directory (nodifies tracked files and staged changes) and saves it on a stack of unfinished changes that can be reapplied at any time. 
+- This leaves the file in its original state, and lets everyone use the file in its original state.
+	- git stash save "<stash message>" (or git stash push)
+	- git stash apply (git stash apply stash@{1}) - will take the unfinished file to where you left off.
+	- git stash list - will show a list of all the unfinished items
+	- git stash drop (git stash drop stash@{1} - will drop the last stash or specific stash
+	- git stash show stash@{1} - Get info on the specific stash
+- Git stash to a different branch
+	- git stash -u -- Saves all the files, both new and modified
+	- git stash branch <new_branch_name> -- Creates branch, switches to it and applies the stash and drops the stash.
